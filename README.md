@@ -6,7 +6,7 @@
 3. [Download the GitHub Repo](#download-the-github-repo)
 4. [Download Required Python Packages](#download-required-python-packages)
 
-###-Required Materials
+### Required Materials
 
 1. Raspberry Pi 3b+
 2. Micro SD Card
@@ -16,7 +16,7 @@
 6. Jumper Wires
 7. Resistors
 
-
+<br><br><br>
 ## Raspberry Pi Initial Setup
 
 ### Required Materials
@@ -54,7 +54,7 @@ The latest Raspbian distributions, by default, do not allow for SSH. To enable i
 
 The above is adopted form the official instructions [here](https://www.raspberrypi.org/documentation/remote-access/ssh/).
 
-
+<br><br><br>
 ## SSH Setup for Windows
 
 ### Step 1: Ping the Raspberry Pi
@@ -78,7 +78,7 @@ Click `Open` to estable an SSH connection. The default username is `pi`, and the
 
 Open WinSCP, and enter the static IP you used above, keep the Port as 22, and enter the username `pi`, and either the default password `raspberry` or the new password if you changed it. Click `Save` if you'd like to save the IP address for future reference. When you connect, you should be able to see the files and folders on the Pi. You can use this to transfer files onto the Pi remotely.
 
-
+<br><br><br>
 ## Download the GitHub Repo
 
 ### Step 1: SSH into the Pi
@@ -95,7 +95,7 @@ git clone https://github.com/reowen/Park-Assist.git
 
 This will create a folder called "Park-Assist" in your home directory with all of the scripts for this project.
 
-
+<br><br><br>
 ## Download Required Python Packages
 
 INSTRUCTIONS HERE
