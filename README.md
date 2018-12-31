@@ -1,3 +1,55 @@
 # Raspberry Pi Parking Assistant
 
-Testing adding a line 
+### Setup Instructions
+1. [Raspberry Pi Initial Setup](#raspberry-pi-initial-setup)
+2. [SSH Setup for Windows](#ssh-setup-for-windows)
+
+### Required Materials
+
+1. Raspberry Pi 3b+
+2. Micro SD Card
+3. Pi Traffic Light - [Amazon](https://www.amazon.com/gp/product/B00RIIGD30/ref=oh_aui_detailpage_o03_s01?ie=UTF8&psc=1)
+4. Ultrasonic Distance Sensor HC-SR04 - [Amazon](https://www.amazon.com/SainSmart-HC-SR04-Ranging-Detector-Distance/dp/B004U8TOE6/ref=asc_df_B004U8TOE6/?tag=hyprod-20&linkCode=df0&hvadid=312127837151&hvpos=1o2&hvnetw=g&hvrand=16154594324665021790&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008164&hvtargid=pla-459285090715&psc=1&tag=&ref=&adgrpid=57636291530&hvpone=&hvptwo=&hvadid=312127837151&hvpos=1o2&hvnetw=g&hvrand=16154594324665021790&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008164&hvtargid=pla-459285090715)
+5. PIR Motion Sensor HC-SR501 - [Amazon](https://www.amazon.com/DIYmall-HC-SR501-Motion-Infrared-Arduino/dp/B012ZZ4LPM/ref=asc_df_B012ZZ4LPM/?tag=hyprod-20&linkCode=df0&hvadid=312141147291&hvpos=1o3&hvnetw=g&hvrand=17007910937892278118&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008164&hvtargid=pla-570427408451&psc=1&tag=&ref=&adgrpid=68997874944&hvpone=&hvptwo=&hvadid=312141147291&hvpos=1o3&hvnetw=g&hvrand=17007910937892278118&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008164&hvtargid=pla-570427408451)
+6. Jumper Wires
+7. Resistors
+
+
+## Raspberry Pi Initial Setup
+
+### Required Materials
+1. Raspberry Pi 3b+
+2. Micro SD Card
+
+The steps below describe how to set up a Raspberry Pi for the first time, and enable SSH. SSH allows you to remotely connect to the Raspberry Pi from another computer. This allows you to develop/troubleshoot on your Pi without needing to connect keyboards and monitors.
+
+### Step 1: Install Raspbian on the SD Card and the Raspberry Pi
+
+For easy installation, use the [NOOBS package](https://www.raspberrypi.org/documentation/installation/noobs.md) from the Raspberry Pi website.
+
+For more advanced installation, follow the instructions [here](https://www.raspberrypi.org/documentation/installation/installing-images/).
+
+After saving to the SD Card, put the SD card into the Raspberry Pi and boot it. Follow the on-screen instructions for installing Raspbian and configuring your WiFi, timezone, language, etc.
+
+### Step 2: Set up a static IP address on the Pi
+
+First, check the default IP address settings for your network. Boot the RPI, open the terminal and type `ip a`.
+
+The IP address of your RPI should be listed under the eth0 header (if connected to ethernet), or the wlan0 header (if using WiFi). It should look something like this: 198.168.0.XXX. The default IP format is the first three sets of numbers. For many networks, it will look like 198.168.0.XXX. On my network, the last "0" is a "7" (i.e. 198.168.7.XXX). When you're following the instructions in the link below, be sure to use your network's standard IP format. For example, the instructions below assume the IP is 192.168.0.XXX. However, in my case, I need to use 192.168.7.XXX.  
+
+The official instructions for setting up a static IP address are [here](https://www.raspberrypi.org/learning/networking-lessons/rpi-static-ip-address/).
+
+Be sure to follow the "Testing" instructions in the above link, by rebooting your Pi and confirming the correct IP address is set.
+
+### Step 3: Enable SSH on your Pi
+
+The latest Raspbian distributions, by default, do not allow for SSH. To enable it, do the following:
+
+1. Type `sudo raspi-config` in a terminal.
+2. Select `Interfacing Options`.
+3. Select `SSH`
+4. Select `Yes` > `Ok` > `Finish`
+
+The above is adopted form the official instructions [here](https://www.raspberrypi.org/documentation/remote-access/ssh/).
+
+## SSH Setup for Windows
