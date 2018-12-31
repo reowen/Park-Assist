@@ -3,8 +3,9 @@
 ### Setup Instructions
 1. [Raspberry Pi Initial Setup](#raspberry-pi-initial-setup)
 2. [SSH Setup for Windows](#ssh-setup-for-windows)
+3. [Download the GitHub Repo](#download-the-github-repo)
 
-### Required Materials
+###-Required Materials
 
 1. Raspberry Pi 3b+
 2. Micro SD Card
@@ -53,3 +54,24 @@ The latest Raspbian distributions, by default, do not allow for SSH. To enable i
 The above is adopted form the official instructions [here](https://www.raspberrypi.org/documentation/remote-access/ssh/).
 
 ## SSH Setup for Windows
+
+### Step 1: Ping the Raspberry Pi
+First, confirm that the Pi can be reached over the network. Type `cmd` into the program search bar, and open the Windows command line.
+In the command line, type `ping 198.168.0.XXX`, using the static IP address you selected in "Step 2" above. If you get a network response, then the Pi can be reached.
+
+### Step 2: Download the PuTTY and WinSCP Clients
+Next, Download [PuTTY](https://www.putty.org/) and [WinSCP](https://winscp.net/eng/download.php).
+
+PuTTY allows us to SSH into the Pi. WinSCP is a file transfer program that allows us to transfer files to the Pi remotely over the home network.
+
+### Step 3: Set up PuTTY
+
+Open PuTTY, and put the static IP you set up in the `Host Name (or IP address)` box (do not include the `/24` at the end of the IP you set up... e.g. if you followed the official instructions exactly, you would enter `192.168.0.2` here). Keep the port as 22. Select `SSH` as the connection type.
+
+To save the IP address for future reference, you can enter a name under `Saved Sessions` and click `Save`. Then, whenever you open PuTTY, you can select the name, click `Load` and then `Open`.
+
+Click `Open` to estable an SSH connection. The default username is `pi`, and the default password is `raspberry`. If you changed the password on the Raspbian setup, be sure to use that password. If the machine connects without an error, then SSH is set up correctly.
+
+### Step 4: Set up WinSCP
+
+Open WinSCP, and enter the static IP you used above, keep the Port as 22, and enter the username `pi`, and either the default password `raspberry` or the new password if you changed it. Click `Save` if you'd like to save the IP address for future reference. When you connect, you should be able to see the files and folders on the Pi. You can use this to transfer files onto the Pi remotely.
