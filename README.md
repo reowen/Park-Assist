@@ -5,6 +5,7 @@
 2. [SSH Setup for Windows](#ssh-setup-for-windows)
 3. [Download the GitHub Repo](#download-the-github-repo)
 4. [Download Required Python Packages](#download-required-python-packages)
+5. [Connect the Sensors](#connect-the-sensors) 
 
 ### Required Materials
 
@@ -97,5 +98,10 @@ This will create a folder called "Park-Assist" in your home directory with all o
 
 <br><br><br>
 ## Download Required Python Packages
+
+INSTRUCTIONS HERE
+
+<br><br><br>
+## Connect the Sensors
 
 INSTRUCTIONS HERE
