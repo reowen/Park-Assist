@@ -75,3 +75,19 @@ Click `Open` to estable an SSH connection. The default username is `pi`, and the
 ### Step 4: Set up WinSCP
 
 Open WinSCP, and enter the static IP you used above, keep the Port as 22, and enter the username `pi`, and either the default password `raspberry` or the new password if you changed it. Click `Save` if you'd like to save the IP address for future reference. When you connect, you should be able to see the files and folders on the Pi. You can use this to transfer files onto the Pi remotely.
+
+## Download the GitHub Repo
+
+### Step 1: SSH into the Pi
+
+Open PuTTY, and establish an SSH connection with the Pi.
+
+### Step 2: Download Git Repository
+
+To download the scripts from this repository, in the PuTTY SSH window, type the following:
+
+```
+git clone https://github.com/reowen/Park-Assist.git
+```
+
+This will create a folder called "Park-Assist" in your home directory with all of the scripts for this project. 
