@@ -99,7 +99,16 @@ This will create a folder called "Park-Assist" in your home directory with all o
 <br><br><br>
 ## Download Required Python Packages
 
-INSTRUCTIONS HERE
+### Pi Traffic Light
+
+The traffic light uses the (RPi.GPIO library)[https://pypi.org/project/RPi.GPIO/]. To install this on your Pi, use PuTTY to SSH into the Pi. After connecting, in the Pi terminal, type the following:
+
+```
+pip install RPi.GPIO
+```
+
+You'll see "Successfully install RPi.GPIO" if it worked. 
+
 
 <br><br><br>
 ## Connect the Sensors
@@ -112,4 +121,4 @@ INSTRUCTIONS HERE
 
 The official connection documentation is [here](http://wiki.lowvoltagelabs.com/pitrafficlight). For the Pi 3B+, we connect to GPIO pins 9, 10, and 11, and a corresponding grounding wire. To do this position the Pi with the HDMI plug facing towards you (so the USB plugs are to the right on the board, and the GPIO pins are at the back). Then, on the front row of GPIO pins, count 7 pins from the right, and place the light to the left of the 7th pin, with the lights pointing away from you. If that description is confusing, refer to the GPIO pin reference image above, and play around with positioning the light until you can get it working.
 
-For wiring and mounting the light in my garage, instead of directly placing the lights on the GPIO pin board, I used female-to-male jumper wires and mounted the lights through the wires. 
+For wiring and mounting the light in my garage, instead of directly placing the lights on the GPIO pin board, I used female-to-male jumper wires and mounted the lights through the wires.
