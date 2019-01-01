@@ -125,7 +125,7 @@ class StopLight:
 
 if __name__ == "__main__":
     # Test the red, green and yellow are working correctly:
-    lgt = StopLight(red_pin=19, yellow_pin=13, green_pin=27)
+    lgt = StopLight(red_pin=19, yellow_pin=13, green_pin=11)
 
     print("Red light on...")
     lgt.toggle_red()
