@@ -124,3 +124,7 @@ The official documentation for the Python modules for the light is [here](http:/
 The official connection documentation is [here](http://wiki.lowvoltagelabs.com/pitrafficlight). For the Pi 3B+, we connect to GPIO pins 9, 10, and 11, and a corresponding grounding wire. To do this position the Pi with the HDMI plug facing towards you (so the USB plugs are to the right on the board, and the GPIO pins are at the back). Then, on the front row of GPIO pins, count 7 pins from the right, and place the light to the left of the 7th pin, with the lights pointing away from you. If that description is confusing, refer to the GPIO pin reference image above, and play around with positioning the light until you can get it working.
 
 For wiring and mounting the light in my garage, instead of directly placing the lights on the GPIO pin board, I used female-to-male jumper wires and mounted the lights through the wires.
+
+### PIR Motion Sensor
+
+Documentation on connecting this sensor can be found [here](https://www.mysensors.org/build/motion). 
