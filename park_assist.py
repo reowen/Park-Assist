@@ -32,13 +32,15 @@ class StopLight:
         GPIO.setup(yellow_pin, GPIO.OUT) # Set yellow LED pin as an output
         GPIO.setup(green_pin, GPIO.OUT) # Set green LED pin as an output
 
-    def toggle_red(self, on=True):
+    def toggle_red(self, on=True, blink=False):
         """
         Turns on or off the red light.
 
         Args:
             on (bool): If on=True, the function will turn on the light. If =False, it will turn off the light. By default, on=True.
+            blink (bool): If blink=True, the function will make the light blink
         """
+        # Validate
         assert isinstance(on, bool), "'on' must be a boolean (True or False)."
         GPIO.output(self.red_pin, on)
 
@@ -62,6 +64,18 @@ class StopLight:
         assert isinstance(on, bool), "'on' must be a boolean (True or False)."
         GPIO.output(self.green_pin, on)
 
+    def toggle_all(self, on=True):
+        """
+        Turns on or off all of the lights.
+
+        Args:
+            on (bool): If on=True, the function will turn on the lights. If =False, it will turn off the light. By default, on=True.
+        """
+        assert isinstance(on, bool), "'on' must be a boolean (True or False)."
+        GPIO.output(self.green_pin, on)
+        GPIO.output(self.yellow_pin, on)
+        GPIO.output(self.red_pin, on)
+
 
 if __name__ == "__main__":
     # Test the red, green and yellow are working correctly:
@@ -81,3 +95,10 @@ if __name__ == "__main__":
     lgt.toggle_green()
     time.sleep(5)
     lgt.toggle_green(on=False)
+
+    print("All lights on...")
+    lgt.toggle_all()
+    time.sleep(5)
+    lgt.toggle_all(on=False)
+
+    GPIO.cleanup()
