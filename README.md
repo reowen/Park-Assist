@@ -109,6 +109,8 @@ pip install RPi.GPIO
 
 You'll see "Successfully install RPi.GPIO" if it worked.
 
+The official documentation for the Python modules for the light is [here](http://wiki.lowvoltagelabs.com/pitrafficlight_python_example). 
+
 
 <br><br><br>
 ## Connect the Sensors
