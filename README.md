@@ -101,13 +101,13 @@ This will create a folder called "Park-Assist" in your home directory with all o
 
 ### Pi Traffic Light
 
-The traffic light uses the (RPi.GPIO library)[https://pypi.org/project/RPi.GPIO/]. To install this on your Pi, use PuTTY to SSH into the Pi. After connecting, in the Pi terminal, type the following:
+The traffic light uses the [RPi.GPIO library](https://pypi.org/project/RPi.GPIO/). To install this on your Pi, use PuTTY to SSH into the Pi. After connecting, in the Pi terminal, type the following:
 
 ```
 pip install RPi.GPIO
 ```
 
-You'll see "Successfully install RPi.GPIO" if it worked. 
+You'll see "Successfully install RPi.GPIO" if it worked.
 
 
 <br><br><br>
