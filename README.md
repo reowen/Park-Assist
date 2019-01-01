@@ -5,7 +5,7 @@
 2. [SSH Setup for Windows](#ssh-setup-for-windows)
 3. [Download the GitHub Repo](#download-the-github-repo)
 4. [Download Required Python Packages](#download-required-python-packages)
-5. [Connect the Sensors](#connect-the-sensors) 
+5. [Connect the Sensors](#connect-the-sensors)
 
 ### Required Materials
 
@@ -104,4 +104,12 @@ INSTRUCTIONS HERE
 <br><br><br>
 ## Connect the Sensors
 
-INSTRUCTIONS HERE
+### GPIO Pin Reference
+
+![GPIO Reference](https://myelectronicslab.com/wp-content/uploads/2016/06/raspbery-pi-3-gpio-pinout-40-pin-header-block-connector-1-1.png)
+
+### Pi Traffic Light
+
+The official connection documentation is [here](http://wiki.lowvoltagelabs.com/pitrafficlight). For the Pi 3B+, we connect to GPIO pins 9, 10, and 11, and a corresponding grounding wire. To do this position the Pi with the HDMI plug facing towards you (so the USB plugs are to the right on the board, and the GPIO pins are at the back). Then, on the front row of GPIO pins, count 7 pins from the right, and place the light to the left of the 7th pin, with the lights pointing away from you. If that description is confusing, refer to the GPIO pin reference image above, and play around with positioning the light until you can get it working.
+
+For wiring and mounting the light in my garage, instead of directly placing the lights on the GPIO pin board, I used female-to-male jumper wires and mounted the lights through the wires. 
