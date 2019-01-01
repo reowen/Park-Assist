@@ -53,37 +53,74 @@ class StopLight:
                 GPIO.output(self.red_pin, False)
                 time.sleep(0.5)
 
-    def toggle_yellow(self, on=True):
+    def toggle_yellow(self, on=True, blink=False):
         """
         Turns on or off the yellow light.
 
         Args:
             on (bool): If on=True, the function will turn on the light. If =False, it will turn off the light. By default, on=True.
+            blink (bool): If blink=True, the function will make the light blink for 5 seconds. By default, the light will not blink.
         """
+        # Validate arguments
         assert isinstance(on, bool), "'on' must be a boolean (True or False)."
-        GPIO.output(self.yellow_pin, on)
+        assert isinstance(blink, bool), "'blink' must be a boolean (True or False)."
 
-    def toggle_green(self, on=True):
+        if not blink:
+            GPIO.output(self.yellow_pin, on)
+        elif blink:
+            for sec in range(0, 5):
+                GPIO.output(self.yellow_pin, True)
+                time.sleep(0.5)
+                GPIO.output(self.yellow_pin, False)
+                time.sleep(0.5)
+
+    def toggle_green(self, on=True, blink=False):
         """
         Turns on or off the green light.
 
         Args:
             on (bool): If on=True, the function will turn on the light. If =False, it will turn off the light. By default, on=True.
+            blink (bool): If blink=True, the function will make the light blink for 5 seconds. By default, the light will not blink.
         """
+        # Validate arguments
         assert isinstance(on, bool), "'on' must be a boolean (True or False)."
-        GPIO.output(self.green_pin, on)
+        assert isinstance(blink, bool), "'blink' must be a boolean (True or False)."
 
-    def toggle_all(self, on=True):
+        if not blink:
+            GPIO.output(self.green_pin, on)
+        elif blink:
+            for sec in range(0, 5):
+                GPIO.output(self.green_pin, True)
+                time.sleep(0.5)
+                GPIO.output(self.green_pin, False)
+                time.sleep(0.5)
+
+    def toggle_all(self, on=True, blink=False):
         """
-        Turns on or off all of the lights.
+        Turns on or off all the lights at the same time.
 
         Args:
-            on (bool): If on=True, the function will turn on the lights. If =False, it will turn off the light. By default, on=True.
+            on (bool): If on=True, the function will turn on the light. If =False, it will turn off the light. By default, on=True.
+            blink (bool): If blink=True, the function will make the light blink for 5 seconds. By default, the light will not blink.
         """
+        # Validate arguments
         assert isinstance(on, bool), "'on' must be a boolean (True or False)."
-        GPIO.output(self.green_pin, on)
-        GPIO.output(self.yellow_pin, on)
-        GPIO.output(self.red_pin, on)
+        assert isinstance(blink, bool), "'blink' must be a boolean (True or False)."
+
+        if not blink:
+            GPIO.output(self.green_pin, on)
+            GPIO.output(self.yellow_pin, on)
+            GPIO.output(self.red_pin, on)
+        elif blink:
+            for sec in range(0, 5):
+                GPIO.output(self.green_pin, True)
+                GPIO.output(self.yellow_pin, True)
+                GPIO.output(self.red_pin, True)
+                time.sleep(0.5)
+                GPIO.output(self.green_pin, False)
+                GPIO.output(self.yellow_pin, False)
+                GPIO.output(self.red_pin, False)
+                time.sleep(0.5)
 
 
 if __name__ == "__main__":
@@ -112,5 +149,14 @@ if __name__ == "__main__":
 
     print("Blink red.")
     lgt.toggle_red(blink=True)
+
+    print("Blink yellow.")
+    lgt.toggle_yellow(blink=True)
+
+    print("Blink green.")
+    lgt.toggle_green(blink=True)
+
+    print("Blink all.")
+    lgt.toggle_all(blink=True)
 
     GPIO.cleanup()
