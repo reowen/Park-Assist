@@ -172,7 +172,7 @@ def initialize_session(pin_mode='BCM'):
     else:
         if pin_mode == 'BCM':
             GPIO.setmode(GPIO.BCM)
-        elif pin_mode = 'BOARD':
+        elif pin_mode == 'BOARD':
             GPIO.setmode(GPIO.BOARD)
         else:
             raise Exception("'pin_mode' must equal either 'BCM' or 'BOARD'.")
