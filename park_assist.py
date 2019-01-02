@@ -160,18 +160,23 @@ def initialize_session(pin_mode='BCM'):
         pin_scheme (str): Determines which pin mode to set. Must equal either 'BCM' (to set the pin scheme to GPIO.BCM), or 'BOARD'.
                           By default, this is 'BCM'.
     """
+    mode = GPIO.getmode()
+    moderef = {10: 'BOARD', 11:'BCM'}
     # If the GPIO mode is already set, prints the current mode.
-    if GPIO.getmode():
-        print("GPIO mode already set to: {}.".format(GPIO.getmode()))
+    if mode:
+        if moderef[mode] == pin_mode:
+            raise Warning('Mode already set to {}!'.format(pin_mode))
+        else:
+            raise Exception("GPIO mode already set to {0}, cannot set to {1}.".format(moderef[GPIO.getmode()], pin_mode))
     # If the GPIO mode is not set, sets the designated pin scheme.
     else:
         if pin_mode == 'BCM':
             GPIO.setmode(GPIO.BCM)
         elif pin_mode = 'BOARD':
-            GPIO.setmode(GPIO.BOARD) 
+            GPIO.setmode(GPIO.BOARD)
         else:
             raise Exception("'pin_mode' must equal either 'BCM' or 'BOARD'.")
-        print("Set GPIO mode to: {}.".format(GPIO.getmode()))
+        print("Set GPIO mode to: {}.".format(moderef[GPIO.getmode()]))
 
 
 def close_session(channels=None):
