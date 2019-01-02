@@ -141,6 +141,7 @@ class MotionSensor():
         # Assign GPIO pin number as instance variable
         self.pin = pin
         # Set GPIO pin as an input
+        GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
         GPIO.setup(pin, GPIO.IN)
 
     def detect_motion(self):
