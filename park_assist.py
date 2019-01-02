@@ -143,7 +143,8 @@ class MotionSensor():
         # Set GPIO pin as an input
         GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
         GPIO.setup(pin, GPIO.IN)
-        time.sleep(2)
+        print("PIR motion sensor initialization begun (takes one minute to initalized).")
+        time.sleep(65)
         print("PIR Motion Sensor activated.")
 
     def detect_motion(self):
