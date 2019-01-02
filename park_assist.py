@@ -145,7 +145,7 @@ class MotionSensor():
         GPIO.setup(pin, GPIO.IN)
         print("PIR Sensor set to GPIO pin: {}".format(self.pin))
         print("PIR motion sensor initialization begun (takes one minute to initalize).")
-        time.sleep(65)
+        time.sleep(5)
         print("PIR Motion Sensor activated.")
 
     def detect_motion(self):
