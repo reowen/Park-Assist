@@ -117,7 +117,7 @@ The official documentation for the Python modules for the light is [here](http:/
 
 ### GPIO Pin Reference
 
-![GPIO Reference](https://myelectronicslab.com/wp-content/uploads/2016/06/raspbery-pi-3-gpio-pinout-40-pin-header-block-connector-1-1.png)
+![GPIO Reference](https://user-images.githubusercontent.com/8964630/50610811-419fe700-0ea2-11e9-91e2-764d14104137.PNG)
 
 ### Pi Traffic Light
 
@@ -127,4 +127,9 @@ For wiring and mounting the light in my garage, instead of directly placing the 
 
 ### PIR Motion Sensor
 
-Documentation on connecting this sensor can be found [here](https://www.mysensors.org/build/motion). 
+A diagram of the motion sensor is here (viewed from the bottom):
+![motion_sensor](https://user-images.githubusercontent.com/8964630/50610857-609e7900-0ea2-11e9-87f3-f4e9856cc3e4.PNG)
+
+Run jumper wires, connecting the GND (ground) pin on the sensor to pin number 6 on the Pi, connect the power sensor pin to pin #4 on the Pi, and the output pin (middle pin on the sensor), to pin #8 on the Pi (GPIO14). See the pin reference image above.
+
+Some more documentation on connecting this sensor can be found [here](https://www.mpja.com/download/31227sc.pdf). 

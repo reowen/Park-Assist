@@ -27,10 +27,7 @@ class StopLight:
         self.green_pin = green_pin
 
         # Pin Setup:
-        GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
-        GPIO.setup(red_pin, GPIO.OUT) # Set red LED pin as an output
-        GPIO.setup(yellow_pin, GPIO.OUT) # Set yellow LED pin as an output
-        GPIO.setup(green_pin, GPIO.OUT) # Set green LED pin as an output
+        GPIO.setup([red_pin, yellow_pin, green_pin], GPIO.OUT) # Set the LED pins as outputs
 
     def toggle_lights(self, red=False, yellow=False, green=False, all=False):
         """
@@ -141,7 +138,6 @@ class MotionSensor():
         # Assign GPIO pin number as instance variable
         self.pin = pin
         # Set GPIO pin as an input
-        GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
         GPIO.setup(pin, GPIO.IN)
         print("PIR Sensor set to GPIO pin: {}".format(self.pin))
         print("PIR motion sensor initializating...")
@@ -156,10 +152,35 @@ class MotionSensor():
             return False
 
 
+def initialize_session(pin_scheme='BCM'):
+    if GPIO.getmode():
+        print("GPIO mode already set to: {}.".format(GPIO.getmode()))
+    else:
+        if pin_scheme == 'BCM':
+            GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
+        elif pin_scheme = 'BOARD':
+            GPIO.setmode(GPIO.BOARD) # Broadcom pin-numbering scheme
+        else:
+            raise Exception("'pin_scheme' must equal either 'BCM' or 'BOARD'.")
+        print("Set GPIO mode to: {}.".format(GPIO.getmode()))
+
+
+def close_session(channels=None):
+    if channels:
+        GPIO.cleanup(channels)
+        print("Cleaned the following channels: {}".format(channels))
+    else:
+        GPIO.cleanup()
+        print("All GPIO pins cleaned.")
+
+
 if __name__ == "__main__":
+    initialize_session()
+
     lgt = StopLight()
-    lgt.blink_multi(all=True)
+    lgt.blink_multi(blinks=3, all=True)
     mtn = MotionSensor(pin=14)
+    
     try:
         print("Loop initialized.")
         while True:
@@ -169,5 +190,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("Program ended...")
     finally:
-        GPIO.cleanup()
-        print("GPIO pins cleaned.")
+        close_session()
