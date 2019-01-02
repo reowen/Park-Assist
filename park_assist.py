@@ -149,15 +149,17 @@ class MotionSensor():
         if GPIO.input(self.pin) == True:
             return True
         else:
-            return False 
+            return False
 
 
 if __name__ == "__main__":
-    # # Test the red, green and yellow are working correctly:
-    # lgt = StopLight()
-    # lgt.test_lights()
-
+    lgt = StopLight()
     mtn = MotionSensor(pin=5)
-    print(mtn.detect_motion())
-
-    GPIO.cleanup()
+    try:
+        while True:
+            if mtn.detect_motion():
+                lgt.test_lights()
+    except KeyboardInterrupt:
+        pass 
+    finally:
+        GPIO.cleanup()
