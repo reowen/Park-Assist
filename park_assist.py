@@ -1,6 +1,7 @@
 
 import RPi.GPIO as GPIO
 import time
+import warnings 
 
 class StopLight:
     """ The StopLight class controls the Pi stoplight. """
@@ -165,7 +166,7 @@ def initialize_session(pin_mode='BCM'):
     # If the GPIO mode is already set, prints the current mode.
     if mode:
         if moderef[mode] == pin_mode:
-            raise Warning('Mode already set to {}!'.format(pin_mode))
+            warnings.warn('Mode already set to {}!'.format(pin_mode))
         else:
             raise Exception("GPIO mode already set to {0}, cannot set to {1}.".format(moderef[GPIO.getmode()], pin_mode))
     # If the GPIO mode is not set, sets the designated pin scheme.
@@ -189,6 +190,7 @@ def close_session(channels=None):
 
 
 if __name__ == "__main__":
+    GPIO.setmode(GPIO.BCM) 
     initialize_session()
 
     lgt = StopLight()
