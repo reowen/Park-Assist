@@ -160,7 +160,8 @@ if __name__ == "__main__":
     try:
         print("Loop initialized.")
         while True:
-            if mtn.detect_motion():
+            # if mtn.detect_motion():
+            if GPIO.input(mtn.pin) == True:
                 lgt.test_lights()
     except KeyboardInterrupt:
         print("Program ended...")
