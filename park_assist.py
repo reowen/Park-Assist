@@ -86,6 +86,7 @@ class StopLight:
         # Blink the specified number of times
         for i in range(0, blinks):
             self.blink(red=red, yellow=yellow, green=green, all=all)
+            time.sleep(0.5)
 
     def test_lights(self):
         """
