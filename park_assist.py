@@ -144,9 +144,9 @@ class MotionSensor():
         GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
         GPIO.setup(pin, GPIO.IN)
         print("PIR Sensor set to GPIO pin: {}".format(self.pin))
-        print("PIR motion sensor initialization begun (takes one minute to initalize).")
+        print("PIR motion sensor initializating...")
         time.sleep(5)
-        print("PIR Motion Sensor activated.")
+        print("PIR motion Sensor activated.")
 
     def detect_motion(self):
         """ Returns True if motion is detected, False otherwise. """
@@ -163,9 +163,9 @@ if __name__ == "__main__":
     try:
         print("Loop initialized.")
         while True:
-            # if mtn.detect_motion():
-            if GPIO.input(mtn.pin) == True:
-                lgt.test_lights()
+            if mtn.detect_motion():
+                print("\nMotion Detected!\n")
+                lgt.blink_multi(all=True)
     except KeyboardInterrupt:
         print("Program ended...")
     finally:
