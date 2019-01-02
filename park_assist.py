@@ -152,16 +152,25 @@ class MotionSensor():
             return False
 
 
-def initialize_session(pin_scheme='BCM'):
+def initialize_session(pin_mode='BCM'):
+    """
+    Initializes the GPIO board on the Pi.
+
+    Args:
+        pin_scheme (str): Determines which pin mode to set. Must equal either 'BCM' (to set the pin scheme to GPIO.BCM), or 'BOARD'.
+                          By default, this is 'BCM'.
+    """
+    # If the GPIO mode is already set, prints the current mode.
     if GPIO.getmode():
         print("GPIO mode already set to: {}.".format(GPIO.getmode()))
+    # If the GPIO mode is not set, sets the designated pin scheme.
     else:
-        if pin_scheme == 'BCM':
-            GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
-        elif pin_scheme = 'BOARD':
-            GPIO.setmode(GPIO.BOARD) # Broadcom pin-numbering scheme
+        if pin_mode == 'BCM':
+            GPIO.setmode(GPIO.BCM)
+        elif pin_mode = 'BOARD':
+            GPIO.setmode(GPIO.BOARD) 
         else:
-            raise Exception("'pin_scheme' must equal either 'BCM' or 'BOARD'.")
+            raise Exception("'pin_mode' must equal either 'BCM' or 'BOARD'.")
         print("Set GPIO mode to: {}.".format(GPIO.getmode()))
 
 
@@ -180,7 +189,7 @@ if __name__ == "__main__":
     lgt = StopLight()
     lgt.blink_multi(blinks=3, all=True)
     mtn = MotionSensor(pin=14)
-    
+
     try:
         print("Loop initialized.")
         while True:
