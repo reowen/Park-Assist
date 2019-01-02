@@ -189,8 +189,7 @@ def close_session(channels=None):
         print("All GPIO pins cleaned.")
 
 
-if __name__ == "__main__":
-    GPIO.setmode(GPIO.BCM) 
+if __name__ == "__main__": 
     initialize_session()
 
     lgt = StopLight()
