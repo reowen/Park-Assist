@@ -133,11 +133,27 @@ class StopLight:
         self.blink_multi(blinks=3, all=True)
 
 
+class MotionSensor():
+    """ Class for controlling and reading the PIR motion sensor. """
+
+    def __init__(self, pin):
+        assert isinstance(pin, int), "'pin' argument must be an integer."
+        # Assign GPIO pin number as instance variable
+        self.pin = pin
+        # Set GPIO pin as an input
+        GPIO.setup(pin, GPIO.IN)
+
+    def detect_motion(self):
+        """ Returns True if motion is detected, False otherwise. """
+        return GPIO.input(self.pin)
 
 
 if __name__ == "__main__":
-    # Test the red, green and yellow are working correctly:
-    lgt = StopLight()
-    lgt.test_lights()
+    # # Test the red, green and yellow are working correctly:
+    # lgt = StopLight()
+    # lgt.test_lights()
+
+    mtn = MotionSensor(pin=5)
+    print(mtn.detect_motion())
 
     GPIO.cleanup()
