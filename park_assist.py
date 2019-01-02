@@ -71,7 +71,7 @@ class StopLight:
         
     def blink_multi(self, blinks=5, red=False, yellow=False, green=False, all=False): 
         """
-        Function that blinks the lights a specified number of times. 
+        Function that blinks the lights a specified number of times. By default, the function blinks 5 times. 
         
         Args: 
             blinks (int): An integer with the number of times the light will blink. By default, the light blinks 5 times. 
@@ -89,7 +89,7 @@ class StopLight:
             
     def test_lights(self): 
         """
-        Runs a quick test to ensure the lights are working correctly. 
+        Runs a test to ensure the lights are working correctly. 
         """
         print("All lights on...") 
         self.toggle_lights(all=True) 
