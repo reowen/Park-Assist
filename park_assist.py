@@ -1,7 +1,7 @@
 
 import RPi.GPIO as GPIO
 import time
-import warnings 
+import warnings
 
 class StopLight:
     """ The StopLight class controls the Pi stoplight. """
@@ -181,6 +181,7 @@ def initialize_session(pin_mode='BCM'):
 
 
 def close_session(channels=None):
+    """ Closes the session by cleaning the GPIO channels on the Pi. """
     if channels:
         GPIO.cleanup(channels)
         print("Cleaned the following channels: {}".format(channels))
@@ -189,7 +190,7 @@ def close_session(channels=None):
         print("All GPIO pins cleaned.")
 
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     initialize_session()
 
     lgt = StopLight()
