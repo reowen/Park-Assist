@@ -165,6 +165,6 @@ if __name__ == "__main__":
             if GPIO.input(mtn.pin) == True:
                 lgt.test_lights()
     except KeyboardInterrupt:
-        print("Program ended... ")
+        print("Program ended...")
     finally:
         GPIO.cleanup()
