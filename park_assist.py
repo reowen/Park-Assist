@@ -160,6 +160,6 @@ if __name__ == "__main__":
             if mtn.detect_motion():
                 lgt.test_lights()
     except KeyboardInterrupt:
-        pass 
+        pass
     finally:
         GPIO.cleanup()
