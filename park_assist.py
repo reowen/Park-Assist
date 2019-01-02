@@ -143,7 +143,7 @@ class MotionSensor():
         # Set GPIO pin as an input
         GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
         GPIO.setup(pin, GPIO.IN)
-        print("PIR motion sensor initialization begun (takes one minute to initalized).")
+        print("PIR motion sensor initialization begun (takes one minute to initalize).")
         time.sleep(65)
         print("PIR Motion Sensor activated.")
 
@@ -158,6 +158,7 @@ class MotionSensor():
 if __name__ == "__main__":
     lgt = StopLight()
     mtn = MotionSensor(pin=8)
+    lgt.blink_multi(all=True)
     try:
         print("Loop initialized.")
         while True:
