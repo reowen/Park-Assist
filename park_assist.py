@@ -156,6 +156,8 @@ class MotionSensor():
 
 
 if __name__ == "__main__":
+    GPIO.cleanup()
+    
     lgt = StopLight()
     mtn = MotionSensor(pin=8)
     lgt.blink_multi(all=True)
