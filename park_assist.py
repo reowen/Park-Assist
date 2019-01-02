@@ -146,7 +146,10 @@ class MotionSensor():
 
     def detect_motion(self):
         """ Returns True if motion is detected, False otherwise. """
-        return GPIO.input(self.pin)
+        if GPIO.input(self.pin) == True:
+            return True
+        else:
+            return False 
 
 
 if __name__ == "__main__":
