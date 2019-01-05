@@ -1,4 +1,11 @@
 
+"""
+This script contains the classes and functions that control the sensors, and initialize the Raspberry Pi's GPIO board.
+
+The master function for controlling the Parking Assistant is in the park_assist.py script. It references the
+class objects and functions in this module. 
+"""
+
 import RPi.GPIO as GPIO
 import time
 import warnings
