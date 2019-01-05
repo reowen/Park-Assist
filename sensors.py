@@ -3,7 +3,7 @@
 This script contains the classes and functions that control the sensors, and initialize the Raspberry Pi's GPIO board.
 
 The master function for controlling the Parking Assistant is in the park_assist.py script. It references the
-class objects and functions in this module. 
+class objects and functions in this module.
 """
 
 import RPi.GPIO as GPIO
@@ -141,7 +141,7 @@ class StopLight:
 class MotionSensor():
     """ Class for controlling and reading the PIR motion sensor. """
 
-    def __init__(self, pin):
+    def __init__(self, pin=14):
         assert isinstance(pin, int), "'pin' argument must be an integer."
         # Assign GPIO pin number as instance variable
         self.pin = pin
