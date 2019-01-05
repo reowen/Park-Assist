@@ -86,7 +86,7 @@ class StopLight:
             self.blink(red=red, yellow=yellow, green=green, all=all)
             time.sleep(0.5)
 
-    def test_lights(self):
+    def test_sensor(self):
         """
         Runs a test to ensure the lights are working correctly.
         """
@@ -152,7 +152,66 @@ class MotionSensor():
         else:
             return False
 
+    def test_sensor(self):
+        initialize_session()
 
+        lgt = StopLight()
+        lgt.blink_multi(blinks=3, all=True)
+
+        try:
+            print("Loop initialized. Press ctrl+c to end.")
+            while True:
+                if self.detect_motion():
+                    print("\nMotion Detected!\n")
+                    lgt.blink_multi(all=True)
+        except KeyboardInterrupt:
+            print("Program ended...")
+        finally:
+            close_session()
+
+
+class DistanceSensor():
+    """ Controls the Distance Sensor """
+
+    def __init__(self, trigger_pin=18, echo_pin=15):
+        # Validate arguments
+        assert isinstance(trigger_pin, int), "'trigger_pin' argument must be an integer."
+        assert isinstance(echo_pin, int), "'echo_pin' argument must be an integer."
+
+        # Assign GPIO pin numbers as instance variables
+        self.trigger = trigger_pin
+        self.echo = echo_pin
+
+        # Setup GPIO pins
+        print("Initializing distance sensor...")
+        GPIO.setup(trigger_pin, GPIO.OUT) # trigger as output pin
+        GPIO.setup(echo_pin, GPIO.IN) # echo as input pin
+        GPIO.output(trigger_pin, False)
+        time.sleep(2)
+        print("Distance sensor initialized.")
+
+    def find_distance(self):
+        # Initialize the trigger
+        GPIO.output(self.trigger, True)
+        time.sleep(0.00001)
+        GPIO.output(self.trigger, False)
+
+        # Log the start and stop times
+        while GPIO.input(self.echo) == 0:
+            pulse_start = time.time()
+        while GPIO.input(self.echo) == 1:
+            pulse_end = time.time()
+
+        duration = stop - start
+        distance = duration * 17150
+        return round(distance, 2)
+
+    def test_sensor(self):
+        dist = self.find_distance()
+        print("Distance: {0}cm.".format(dist))
+
+
+# Helper functions for initializing and ending session
 def initialize_session(pin_mode='BCM'):
     """
     Initializes the GPIO board on the Pi.
@@ -189,21 +248,8 @@ def close_session(channels=None):
         GPIO.cleanup()
         print("All GPIO pins cleaned.")
 
-
 if __name__ == "__main__":
-    initialize_session()
-
-    lgt = StopLight()
-    lgt.blink_multi(blinks=3, all=True)
-    mtn = MotionSensor(pin=14)
-
-    try:
-        print("Loop initialized.")
-        while True:
-            if mtn.detect_motion():
-                print("\nMotion Detected!\n")
-                lgt.blink_multi(all=True)
-    except KeyboardInterrupt:
-        print("Program ended...")
-    finally:
-        close_session()
+    # mtn = MotionSensor(pin=14)
+    # mtn.test_sensor()
+    ds = DistanceSensor()
+    ds.test_sensor()
