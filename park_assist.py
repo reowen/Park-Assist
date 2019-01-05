@@ -153,8 +153,6 @@ class MotionSensor():
             return False
 
     def test_sensor(self):
-        initialize_session()
-
         lgt = StopLight()
         lgt.blink_multi(blinks=3, all=True)
 
@@ -166,8 +164,7 @@ class MotionSensor():
                     lgt.blink_multi(all=True)
         except KeyboardInterrupt:
             print("Program ended...")
-        finally:
-            close_session()
+            pass
 
 
 class DistanceSensor():
@@ -249,7 +246,9 @@ def close_session(channels=None):
         print("All GPIO pins cleaned.")
 
 if __name__ == "__main__":
+    initialize_session()
     mtn = MotionSensor(pin=14)
     mtn.test_sensor()
     # ds = DistanceSensor()
     # ds.test_sensor()
+    close_session()
