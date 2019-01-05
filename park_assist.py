@@ -249,7 +249,7 @@ def close_session(channels=None):
         print("All GPIO pins cleaned.")
 
 if __name__ == "__main__":
-    # mtn = MotionSensor(pin=14)
-    # mtn.test_sensor()
-    ds = DistanceSensor()
-    ds.test_sensor()
+    mtn = MotionSensor(pin=14)
+    mtn.test_sensor()
+    # ds = DistanceSensor()
+    # ds.test_sensor()
