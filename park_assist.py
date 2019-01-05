@@ -199,7 +199,7 @@ class DistanceSensor():
         while GPIO.input(self.echo) == 1:
             pulse_end = time.time()
 
-        duration = stop - start
+        duration = pulse_end - pulse_start
         distance = duration * 17150
         return round(distance, 2)
 
