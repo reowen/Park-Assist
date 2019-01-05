@@ -245,6 +245,7 @@ def close_session(channels=None):
         GPIO.cleanup()
         print("All GPIO pins cleaned.")
 
+
 if __name__ == "__main__":
     initialize_session()
 
