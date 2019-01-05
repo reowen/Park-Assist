@@ -247,8 +247,11 @@ def close_session(channels=None):
 
 if __name__ == "__main__":
     initialize_session()
-    mtn = MotionSensor(pin=14)
-    mtn.test_sensor()
-    # ds = DistanceSensor()
-    # ds.test_sensor()
+
+    # mtn = MotionSensor(pin=14)
+    # mtn.test_sensor()
+
+    ds = DistanceSensor()
+    ds.test_sensor()
+
     close_session()
