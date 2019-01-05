@@ -132,4 +132,8 @@ A diagram of the motion sensor is here (viewed from the bottom):
 
 Run jumper wires, connecting the GND (ground) pin on the sensor to pin number 6 on the Pi, connect the power sensor pin to pin #4 on the Pi, and the output pin (middle pin on the sensor), to pin #8 on the Pi (GPIO14). See the pin reference image above.
 
-Some more documentation on connecting this sensor can be found [here](https://www.mpja.com/download/31227sc.pdf). 
+Some more documentation on connecting this sensor can be found [here](https://www.mpja.com/download/31227sc.pdf).
+
+### Distance Sensor
+
+Some good info on connecting the sensors is [here](https://www.modmypi.com/blog/hc-sr04-ultrasonic-range-sensor-on-the-raspberry-pi).
