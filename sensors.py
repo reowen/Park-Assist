@@ -160,6 +160,7 @@ class MotionSensor():
             return False
 
     def test_sensor(self):
+        """ Tests that the motion detector is working correctly by blinking the stoplights when motion is detected. """  
         lgt = StopLight()
         lgt.blink_multi(blinks=3, all=True)
 
@@ -178,6 +179,14 @@ class DistanceSensor():
     """ Controls the Distance Sensor """
 
     def __init__(self, trigger_pin=18, echo_pin=15):
+        """
+        Sets the GPIO pin values for the trigger and echo pins on the distance sensor, then sets the trigger pin 
+        as an output on the Pi, and the echo pin as an input. 
+        
+        Args: 
+            trigger_pin (int): The GPIO pin used for the trigger. By default, this is GPIO18. 
+            echo_pin (int): The GPIO pin used for the echo. By default, this is GPIO15. 
+        """
         # Validate arguments
         assert isinstance(trigger_pin, int), "'trigger_pin' argument must be an integer."
         assert isinstance(echo_pin, int), "'echo_pin' argument must be an integer."
@@ -195,6 +204,10 @@ class DistanceSensor():
         print("Distance sensor initialized.")
 
     def find_distance(self):
+        """
+        Takes a distance reading using the sensor, by counting the number of milliseconds between the trigger 
+        and echo times. Returns the read distance in centimeters. 
+        """
         # Initialize the trigger
         GPIO.output(self.trigger, True)
         time.sleep(0.00001)
@@ -207,10 +220,11 @@ class DistanceSensor():
             pulse_end = time.time()
 
         duration = pulse_end - pulse_start
-        distance = duration * 17150
+        distance = duration * 17150 # converts the measured duration to centimeters 
         return round(distance, 2)
 
     def test_sensor(self):
+        """ Tests the sensor by taking a distance reading, and printing the results in the terminal. """
         dist = self.find_distance()
         print("Distance: {0}cm.".format(dist))
 
@@ -221,8 +235,8 @@ def initialize_session(pin_mode='BCM'):
     Initializes the GPIO board on the Pi.
 
     Args:
-        pin_scheme (str): Determines which pin mode to set. Must equal either 'BCM' (to set the pin scheme to GPIO.BCM), or 'BOARD'.
-                          By default, this is 'BCM'.
+        pin_mode (str): Determines which pin mode to set. Must equal either 'BCM' (to set the pin scheme to GPIO.BCM), or 'BOARD'.
+                        By default, this is 'BCM'.
     """
     mode = GPIO.getmode()
     moderef = {10: 'BOARD', 11:'BCM'}
@@ -255,9 +269,12 @@ def close_session(channels=None):
 
 if __name__ == "__main__":
     initialize_session()
+    
+    lgt = StopLight() 
+    lgt.test_sensor() 
 
-    # mtn = MotionSensor(pin=14)
-    # mtn.test_sensor()
+    mtn = MotionSensor(pin=14)
+    mtn.test_sensor()
 
     ds = DistanceSensor()
     ds.test_sensor()
